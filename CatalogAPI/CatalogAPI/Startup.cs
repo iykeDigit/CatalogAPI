@@ -41,7 +41,10 @@ namespace CatalogAPI
             });
 
             services.AddSingleton<IInMemItemsRepository, MongoDbItemsRepository>();
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.SuppressAsyncSuffixInActionNames = false;
+            });
            // services.AddSingleton<IInMemItemsRepository, InMemItemsRepository>();
             services.AddSwaggerGen(c =>
             {
